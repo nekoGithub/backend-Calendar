@@ -89,13 +89,16 @@ const loginUsuario = async( req, res = response ) => {
 const revalidarToken = async( req, res = response ) => {
     /* const uid  = req.uid;
     const name  = req.name; */
+    const { uid, name} = req;
 
     // Genera un nuevo token
-    const token = await generarJWT( req.uid, req.name );
+    const token = await generarJWT( uid, name );
     
 
     res.json({
         ok: true,
+        uid,
+        name,
         token
     })
 }
